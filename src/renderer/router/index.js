@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'clock-page',
-      component: require('@/components/ClockPage').default
+      component: require('@/pages/mainPage').default
     },
     {
       path: '*',
