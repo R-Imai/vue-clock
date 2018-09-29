@@ -17,9 +17,4 @@ export default{
 </script>
 
 <style>
-.mainpage{
-  width: 250px;
-  height: 160px;
-  background-color: #ccffee;
-}
 </style>

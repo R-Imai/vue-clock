@@ -1,16 +1,18 @@
 <template>
-  <div class="Clock">
+  <div class="Clock" v-bind:class="{margin: isNotInfo}">
+    <div class="info" v-bind:class="{disable: isNotInfo}">
+      {{info}}
+    </div>
     <div class="Date">
       {{ date }}
     </div>
-    <div class="Time">
+    <div v-bind:class=timeClass>
       {{ time }}
     </div>
   </div>
 </template>
 
 <script>
-  // import Push from 'push.js'
   function set0 (num) {
     let ret
     if (num < 10) {
@@ -26,22 +28,13 @@
       return {
         date: '',
         time: '',
-        noti: ''
+        notifiList: '',
+        timeClass: 'Time',
+        isNotInfo: true,
+        info: ''
       }
     },
     methods: {
-      // notifi: function () {
-      //   console.log(Push)
-      //   Push.create('Hello world!', {
-      //     body: 'Test?',
-      //     timeout: 10000,
-      //     onClick: function () {
-      //       window.focus()
-      //       this.close()
-      //     }
-      //   })
-      //   console.log(Push.supported())
-      // },
       getTime: function () {
         const DWs = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
         const Now = new Date()
@@ -55,28 +48,54 @@
         const hh = set0(Now.getHours())
         const mm = set0(Now.getMinutes())
         const ss = set0(Now.getSeconds())
-        // if (ss === '00') {
-        //   this.notifi()
-        // }
         this.date = ' ' + YY + '/' + MM + '/' + DD + '[' + DW + ']'
         this.time = hh + ':' + mm + ':' + ss
+
+        const formatNotifi = hh + ':' + mm
+        if (this.notifiList[formatNotifi] !== undefined) {
+          console.log(this.notifiList[formatNotifi])
+          this.timeClass = 'TimeNotifi'
+          this.isNotInfo = false
+          this.info = this.notifiList[formatNotifi]
+        } else {
+          this.timeClass = 'Time'
+          this.isNotInfo = true
+          this.info = ''
+        }
       }
     },
     beforeMount: function () {
       setInterval(function () { this.getTime() }.bind(this), 1000)
+      this.notifiList = require('../assets/notifiTime.json')
     }
   }
 </script>
 
 <style lang="scss">
+  .margin{
+    margin-top: 10px;
+  }
   .Clock{
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
+    .info{
+      color: #fffd20;
+      font-size: 14px;
+    }
     .Date{
-      color: #006644;
+      color: #00cc88;
+      font-size: 26px;
     }
     .Time{
       color: #14eedb;
+      margin-top: 5px;
+    }
+    .TimeNotifi{
+      color: #dd0000;
+      font-weight: bold;
+    }
+    .disable{
+      disable: true;
     }
   }
 </style>

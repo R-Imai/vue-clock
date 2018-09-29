@@ -19,11 +19,11 @@ function createWindow () {
   /**
    * Initial window options
    */
+  const winWidth = 250
+  const winHeight = 180
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    // width: 250,
-    // height: 160,
+    width: winWidth,
+    height: winHeight,
     'transparent': true,
     'frame': false,
     'resizable': true
@@ -31,6 +31,9 @@ function createWindow () {
   })
 
   mainWindow.loadURL(winURL)
+
+  mainWindow.setPosition(100, 100)
+  mainWindow.setAlwaysOnTop(true)
 
   mainWindow.on('closed', () => {
     mainWindow = null
