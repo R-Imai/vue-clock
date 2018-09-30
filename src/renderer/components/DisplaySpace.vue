@@ -9,7 +9,7 @@
 
 <style lang="scss">
 .display-space{
-  background-color: rgba(199, 255, 195, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
   text-align: center;
   margin: 5px;
   margin-top: 10px;

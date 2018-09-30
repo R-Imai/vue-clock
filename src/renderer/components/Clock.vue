@@ -79,11 +79,11 @@
     font-size: 28px;
     text-align: center;
     .info{
-      color: #fffd20;
+      color: #88caff;
       font-size: 14px;
     }
     .Date{
-      color: #00cc88;
+      color: #66ffcc;
       font-size: 26px;
     }
     .Time{
@@ -91,7 +91,7 @@
       margin-top: 5px;
     }
     .TimeNotifi{
-      color: #dd0000;
+      color: #ff2a2a;
       font-weight: bold;
     }
     .disable{
