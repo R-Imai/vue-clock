@@ -1,6 +1,9 @@
-# vue-clock
+# vue-clock ([DesktopClock](https://github.com/R-Imai/DesktopClock) Ver.2)
 
-> electron-vue clock
+> [更新内容]
+> - Vue
+> - 最前面表示
+> - ルーティンワーク通知機能(src/renderer/assets/notifiTime.json)
 
 #### Build Setup
 
